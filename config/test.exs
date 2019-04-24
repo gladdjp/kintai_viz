@@ -11,8 +11,8 @@ config :logger, level: :warn
 
 # Configure your database
 config :kintai_viz, KintaiViz.Repo,
-  username: "postgres",
-  password: "postgres",
-  database: "kintai_viz_test",
+  username: System.get_env("TEST_DB_USERNAME"),
+  password: System.get_env("TEST_DB_PASSWORD"),
+  database: System.get_env("TEST_DB"),
   hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox

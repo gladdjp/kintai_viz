@@ -68,8 +68,8 @@ config :phoenix, :plug_init_mode, :runtime
 
 # Configure your database
 config :kintai_viz, KintaiViz.Repo,
-  username: "postgres",
-  password: "postgres",
-  database: "kintai_viz_dev",
+  username: System.get_env("DEV_DB_USERNAME"),
+  password: System.get_env("DEV_DB_PASSWORD"),
+  database: System.get_env("DEV_DB"),
   hostname: "localhost",
   pool_size: 10
