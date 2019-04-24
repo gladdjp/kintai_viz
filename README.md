@@ -1,20 +1,24 @@
 # KintaiViz
 
-To start your Phoenix server:
+The sample application to demonstrate the code in Elixir and Phoenix.
+KintaiViz listen to the webhook from our slack's Kintai channel and visualize
+them in real time.
 
-  * Install dependencies with `mix deps.get`
-  * Create and migrate your database with `mix ecto.setup`
-  * Install Node.js dependencies with `cd assets && npm install`
-  * Start Phoenix endpoint with `mix phx.server`
+## Prerequisite
+- Elixir (>=1.7)
+- PostgreSQL
+- Node
 
-Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
+## Installation
+1. Rename `.env.example` to `.env` then edit that file by adding your db username
+and password. You can leave the database name as is.
+2. Run `source .env` to load the system variable.
+3. Run `mix deps.get`
+4. Run `mix ecto.create`
+5. Run `mix ecto.migrate`
 
-Ready to run in production? Please [check our deployment guides](https://hexdocs.pm/phoenix/deployment.html).
+## Up & Running
+1. When you access the folder for the first time, run `source .env` to load the
+environment variables.
+2. Run `iex -S mix phx.server`. This will start the server at `localhost:4000`
 
-## Learn more
-
-  * Official website: http://www.phoenixframework.org/
-  * Guides: https://hexdocs.pm/phoenix/overview.html
-  * Docs: https://hexdocs.pm/phoenix
-  * Mailing list: http://groups.google.com/group/phoenix-talk
-  * Source: https://github.com/phoenixframework/phoenix
