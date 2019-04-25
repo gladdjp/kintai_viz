@@ -1,12 +1,16 @@
 defmodule KintaiViz.SlackWebhook do
   alias KintaiViz.Messages
 
+  def handle_webhook(%{"type" => "message", "subtype" => subtype}) do
+    IO.puts("Ignore subtype #{subtype}")
+  end
+
   def handle_webhook(%{"type" => "message"} = params) do
     IO.puts "--------------------"
     IO.puts(inspect(params, pretty: true))
     IO.puts "--------------------"
     %{"channel" => channel, "text" => text, "ts" => ts, "user" => user} = params
-    p = Messages.create_slack_message(%{
+    Messages.create_slack_message(%{
       slack_user_id: user,
       message: text,
       ts: ts,
