@@ -7,6 +7,7 @@ defmodule KintaiVizWeb.PageController do
 
   def status(conn, params) do
     # render(conn, "index.html")
+    IO.puts("PARAMS = #{inspect params}")
     text(conn, "#{params["challenge"]}")
   end
 end
