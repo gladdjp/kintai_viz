@@ -5,7 +5,14 @@ defmodule KintaiVizWeb.Router do
     plug :accepts, ["html"]
     plug :fetch_session
     plug :fetch_flash
-    # plug :protect_from_forgery
+    plug :protect_from_forgery
+    plug :put_secure_browser_headers
+  end
+
+  pipeline :slack_webhook do
+    plug :accepts, ["html"]
+    plug :fetch_session
+    plug :fetch_flash
     plug :put_secure_browser_headers
   end
 
@@ -17,9 +24,15 @@ defmodule KintaiVizWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
-    post "/status", PageController, :status
+
     resources "/users", UserController
     resources "/slack_message", SlackMessageController
+  end
+
+  scope "slack", KintaiVizWeb do
+    pipe_through :slack_webhook
+
+    post "/status", PageController, :status
   end
 
   # Other scopes may use custom stacks.
