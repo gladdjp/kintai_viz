@@ -1,6 +1,8 @@
 defmodule KintaiVizWeb.UserController do
   use KintaiVizWeb, :controller
 
+  plug :put_layout, "page.html"
+
   alias KintaiViz.Accounts
   alias KintaiViz.Accounts.User
 
