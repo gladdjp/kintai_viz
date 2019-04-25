@@ -1,0 +1,34 @@
+<h1>Listing Slack messages</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Slack user</th>
+      <th>Message</th>
+      <th>Ts</th>
+      <th>Channel</th>
+      <th>Client msg</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for slack_message <- @slack_messages do %>
+    <tr>
+      <td><%= slack_message.slack_user_id %></td>
+      <td><%= slack_message.message %></td>
+      <td><%= slack_message.ts %></td>
+      <td><%= slack_message.channel %></td>
+      <td><%= slack_message.client_msg_id %></td>
+
+      <td>
+        <%= link "Show", to: Routes.slack_message_path(@conn, :show, slack_message) %>
+        <%= link "Edit", to: Routes.slack_message_path(@conn, :edit, slack_message) %>
+        <%= link "Delete", to: Routes.slack_message_path(@conn, :delete, slack_message), method: :delete, data: [confirm: "Are you sure?"] %>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<span><%= link "New Slack message", to: Routes.slack_message_path(@conn, :new) %></span>

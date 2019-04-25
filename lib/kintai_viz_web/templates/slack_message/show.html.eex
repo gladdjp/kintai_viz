@@ -1,0 +1,33 @@
+<h1>Show Slack message</h1>
+
+<ul>
+
+  <li>
+    <strong>Slack user:</strong>
+    <%= @slack_message.slack_user_id %>
+  </li>
+
+  <li>
+    <strong>Message:</strong>
+    <%= @slack_message.message %>
+  </li>
+
+  <li>
+    <strong>Ts:</strong>
+    <%= @slack_message.ts %>
+  </li>
+
+  <li>
+    <strong>Channel:</strong>
+    <%= @slack_message.channel %>
+  </li>
+
+  <li>
+    <strong>Client msg:</strong>
+    <%= @slack_message.client_msg_id %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: Routes.slack_message_path(@conn, :edit, @slack_message) %></span>
+<span><%= link "Back", to: Routes.slack_message_path(@conn, :index) %></span>

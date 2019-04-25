@@ -1,0 +1,31 @@
+<%= form_for @changeset, @action, fn f -> %>
+  <%= if @changeset.action do %>
+    <div class="alert alert-danger">
+      <p>Oops, something went wrong! Please check the errors below.</p>
+    </div>
+  <% end %>
+
+  <%= label f, :slack_user_id %>
+  <%= text_input f, :slack_user_id %>
+  <%= error_tag f, :slack_user_id %>
+
+  <%= label f, :message %>
+  <%= textarea f, :message %>
+  <%= error_tag f, :message %>
+
+  <%= label f, :ts %>
+  <%= text_input f, :ts %>
+  <%= error_tag f, :ts %>
+
+  <%= label f, :channel %>
+  <%= text_input f, :channel %>
+  <%= error_tag f, :channel %>
+
+  <%= label f, :client_msg_id %>
+  <%= text_input f, :client_msg_id %>
+  <%= error_tag f, :client_msg_id %>
+
+  <div>
+    <%= submit "Save" %>
+  </div>
+<% end %>

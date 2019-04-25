@@ -19,6 +19,7 @@ defmodule KintaiVizWeb.Router do
     get "/", PageController, :index
     post "/status", PageController, :status
     resources "/users", UserController
+    resources "/slack_message", SlackMessageController
   end
 
   # Other scopes may use custom stacks.
