@@ -29,10 +29,10 @@ defmodule KintaiVizWeb.Router do
     resources "/slack_message", SlackMessageController
   end
 
-  scope "slack", KintaiVizWeb do
+  scope "/slack", KintaiVizWeb do
     pipe_through :slack_webhook
 
-    post "/status", PageController, :status
+    post "/status", Slack.WebhookController, :status
   end
 
   # Other scopes may use custom stacks.

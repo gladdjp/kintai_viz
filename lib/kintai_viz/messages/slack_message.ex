@@ -17,6 +17,6 @@ defmodule KintaiViz.Messages.SlackMessage do
   def changeset(slack_message, attrs) do
     slack_message
     |> cast(attrs, [:slack_user_id, :message, :ts, :channel, :client_msg_id])
-    |> validate_required([:slack_user_id, :message, :ts, :channel, :client_msg_id])
+    |> validate_required([:slack_user_id, :message, :ts, :channel])
   end
 end
