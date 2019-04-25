@@ -73,3 +73,5 @@ config :kintai_viz, KintaiViz.Repo,
   database: System.get_env("DEV_DB"),
   hostname: "localhost",
   pool_size: 10
+
+config :slack, api_token: System.get_env("DEV_SLACK_API_TOKEN")
