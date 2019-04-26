@@ -11,9 +11,10 @@ defmodule KintaiViz.Application do
       # Start the Ecto repository
       KintaiViz.Repo,
       # Start the endpoint when the application starts
-      KintaiVizWeb.Endpoint
+      KintaiVizWeb.Endpoint,
       # Starts a worker by calling: KintaiViz.Worker.start_link(arg)
       # {KintaiViz.Worker, arg},
+      {Task.Supervisor, name: KintaiViz.SlackSuperVisor}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
