@@ -6,10 +6,8 @@ defmodule KintaiViz.SlackWebhook do
   end
 
   def handle_webhook(%{"type" => "message"} = params) do
-    IO.puts "--------------------"
-    IO.puts(inspect(params, pretty: true))
-    IO.puts "--------------------"
     %{"channel" => channel, "text" => text, "ts" => ts, "user" => user} = params
+    IO.puts "Save message '#{text}'"
     Messages.create_slack_message(%{
       slack_user_id: user,
       message: text,
