@@ -32,7 +32,7 @@ defmodule KintaiVizWeb.Router do
   scope "/slack", KintaiVizWeb do
     pipe_through :slack_webhook
 
-    post "/status", Slack.WebhookController, :status
+    post "/webhook", Slack.WebhookController, :webhook
   end
 
   # Other scopes may use custom stacks.
