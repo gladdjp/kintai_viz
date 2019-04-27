@@ -38,6 +38,16 @@ defmodule KintaiViz.Accounts do
   def get_user!(id), do: Repo.get!(User, id)
 
   @doc """
+  Gets a single user by slack user id
+
+  ## Examples
+
+      iex> get_user_by_slack_user_id(123)
+      %User{}
+  """
+  def get_user_by_slack_user_id(slack_user_id), do: Repo.get_by(User, slack_user_id: slack_user_id)
+
+  @doc """
   Creates a user.
 
   ## Examples

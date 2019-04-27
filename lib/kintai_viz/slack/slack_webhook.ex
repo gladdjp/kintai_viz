@@ -1,5 +1,6 @@
 defmodule KintaiViz.SlackWebhook do
   alias KintaiViz.Messages
+  alias KintaiViz.Accounts
 
   def handle_webhook(%{"type" => "message", "subtype" => subtype}) do
     IO.puts("Ignore subtype #{subtype}")
@@ -7,7 +8,9 @@ defmodule KintaiViz.SlackWebhook do
 
   def handle_webhook(%{"type" => "message"} = params) do
     %{"channel" => channel, "text" => text, "ts" => ts, "user" => user} = params
-    IO.puts "Save message '#{text}'"
+    IO.puts "::::: Sleep 4000"
+    Process.sleep(4000)
+    IO.puts "::::: Save message '#{inspect params}'"
     Messages.create_slack_message(%{
       slack_user_id: user,
       message: text,
@@ -21,18 +24,14 @@ defmodule KintaiViz.SlackWebhook do
     # IO.puts "nooo"
   end
 
+  def create_user(slack_user_id) do
+    Process.sleep(5000)
+
+    case Accounts.get_user_by_slack_user_id(slack_user_id) do
+      nil ->
+        Accounts.create_user(%{slack_user_id: slack_user_id})
+        IO.puts("Create user #{slack_user_id}")
+    end
+  end
+
 end
-# %{"api_app_id" => "AHTFBG2FL",
-# "authed_users" => ["UC1F1LLBX"],
-# "event" => %{
-#   "bot_id" => "B0VD4HX25",
-#   "channel" => "CDJFKD8M6",
-#   "channel_type" => "channel",
-#   "event_ts" => "1556186224.028900",
-#   "icons" => %{"image_48" => "https://s3-us-west-2.amazonaws."},
-#   "subtype" => "bot_message",
-#   "text" => "【0]",
-#   "ts" => "1556186224.028900",
-#   "type" => "message",
-#   "username" => "GLADD"},
-#   "event_id" => "EvJ646DVFX", "event_time" => 1556186224, "team_id" => "T067CF4P7", "token" => "ZX3GeqR6AMBbJNIa0ZV0ACIs", "type" => "event_callback"}
