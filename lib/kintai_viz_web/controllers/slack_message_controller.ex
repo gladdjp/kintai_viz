@@ -4,6 +4,8 @@ defmodule KintaiVizWeb.SlackMessageController do
   alias KintaiViz.Messages
   alias KintaiViz.Messages.SlackMessage
 
+  plug :put_layout, "page.html"
+
   def index(conn, _params) do
     slack_messages = Messages.list_slack_messages()
     render(conn, "index.html", slack_messages: slack_messages)

@@ -26,7 +26,7 @@ defmodule KintaiVizWeb.Router do
     get "/", PageController, :index
 
     resources "/users", UserController
-    resources "/slack_message", SlackMessageController
+    resources "/slack_messages", SlackMessageController
   end
 
   scope "/slack", KintaiVizWeb do
