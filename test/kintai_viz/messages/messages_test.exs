@@ -3,21 +3,21 @@ defmodule KintaiViz.MessagesTest do
 
   alias KintaiViz.Messages
 
+  @valid_attrs %{channel: "some channel", client_msg_id: "some client_msg_id", message: "some message", slack_user_id: "some slack_user_id", ts: "some ts"}
+  @update_attrs %{channel: "some updated channel", client_msg_id: "some updated client_msg_id", message: "some updated message", slack_user_id: "some updated slack_user_id", ts: "some updated ts"}
+  @invalid_attrs %{channel: nil, client_msg_id: nil, message: nil, slack_user_id: nil, ts: nil}
+
+  def slack_message_fixture(attrs \\ %{}) do
+    {:ok, slack_message} =
+      attrs
+      |> Enum.into(@valid_attrs)
+      |> Messages.create_slack_message()
+
+    slack_message
+  end
+
   describe "slack_messages" do
     alias KintaiViz.Messages.SlackMessage
-
-    @valid_attrs %{channel: "some channel", client_msg_id: "some client_msg_id", message: "some message", slack_user_id: "some slack_user_id", ts: "some ts"}
-    @update_attrs %{channel: "some updated channel", client_msg_id: "some updated client_msg_id", message: "some updated message", slack_user_id: "some updated slack_user_id", ts: "some updated ts"}
-    @invalid_attrs %{channel: nil, client_msg_id: nil, message: nil, slack_user_id: nil, ts: nil}
-
-    def slack_message_fixture(attrs \\ %{}) do
-      {:ok, slack_message} =
-        attrs
-        |> Enum.into(@valid_attrs)
-        |> Messages.create_slack_message()
-
-      slack_message
-    end
 
     test "list_slack_messages/0 returns all slack_messages" do
       slack_message = slack_message_fixture()
