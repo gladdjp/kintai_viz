@@ -8,7 +8,7 @@ class Timeline extends Component {
           {label}
         </div>
         <div className='slot-items'>
-          {items.map((i) => (<div key={i}> {i} </div>))}
+          {items.map((i) => (<div className={`user user-${i}`} key={i}></div>))}
         </div>
       </div>
     );

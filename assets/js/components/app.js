@@ -17,8 +17,8 @@ class App extends Component {
   render() {
     return (
       <Provider store={store}>
-        <div>
-          <div> Kintai Visualizer </div>
+        <div className='main-wrapper'>
+          <h1> Today's Kintai</h1>
           <Timeline />
         </div>
       </Provider>
