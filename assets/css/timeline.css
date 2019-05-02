@@ -1,3 +1,45 @@
 .timeline {
   background-color: white;
+  display: flex;
+}
+
+.date {
+  font-family: Helvetica-Bold;
+  font-size: 26px;
+  color: #CAA8D3;
+  text-align: left;
+  flex: 1 1 30%;
+  text-align: right;
+  margin-right: 20px;
+}
+
+.year {
+  letter-spacing: 4px;
+  line-height: 23px;
+}
+
+.slots {
+  flex: 1 1 70%;
+  margin-top: 6px;
+}
+
+.slot {
+  display: flex;
+  margin-bottom: 1px;
+}
+
+.slot-label {
+  background: #DAC7E3;
+  flex: 0 0 100px;
+  padding: 6px 2px 2px 2px;
+  text-align: center;
+  font-weight: bold;
+  color: white;
+}
+.slot-items {
+  border: 1px solid #E7DBEC;
+  display: flex;
+  flex: 1 1 auto;
+  align-items: center;
+  padding: 4px;
 }
