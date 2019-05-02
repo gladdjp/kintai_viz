@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import UserAvatar from './user_avatar';
 
 class Timeline extends Component {
   renderSlots(label, items) {
@@ -8,7 +9,7 @@ class Timeline extends Component {
           {label}
         </div>
         <div className='slot-items'>
-          {items.map((i) => (<div className={`user user-${i}`} key={i}></div>))}
+          {items.map((i) => (<UserAvatar name={i} key={i} />))}
         </div>
       </div>
     );
@@ -17,18 +18,13 @@ class Timeline extends Component {
     return (
       <div className='timeline'>
         <div className='date'>
-          <div className='date-month'>
-            2 May
-          </div>
-          <div className='year'>
-            2019
-          </div>
+          2 May 2019
         </div>
         <div className='slots'>
-          {this.renderSlots('13:00', ['a', 'b', 'c'])}
-          {this.renderSlots('13:30', ['a', 'b', 'c'])}
-          {this.renderSlots('14:00', ['a', 'b', 'c'])}
-          {this.renderSlots('14:30', ['a', 'b', 'c'])}
+          {this.renderSlots('13:00', ['a'])}
+          {this.renderSlots('13:30', ['b', 'c'])}
+          {this.renderSlots('14:00', ['d'])}
+          {this.renderSlots('14:30', ['e'])}
         </div>
       </div>
     );

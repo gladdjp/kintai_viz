@@ -1,0 +1,28 @@
+.user-avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-position: center;
+  background-size: cover;
+  border: 1px solid grey;
+}
+
+.user-a {
+  background-image: url('/images/tokage.png');
+}
+
+.user-b {
+  background-image: url('/images/neko.png');
+}
+
+.user-c {
+  background-image: url('/images/penguin.png');
+}
+
+.user-d {
+  background-image: url('/images/tonkatsu.png');
+}
+
+.user-e {
+  background-image: url('/images/shirokuma.png');
+}

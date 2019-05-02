@@ -1,6 +1,8 @@
 .timeline {
   background-color: white;
   display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .date {
@@ -9,7 +11,6 @@
   color: #CAA8D3;
   text-align: left;
   flex: 1 1 30%;
-  text-align: right;
   margin-right: 20px;
 }
 
@@ -36,6 +37,8 @@
   font-weight: bold;
   color: white;
   font-size: 120%;
+  display: flex;
+  align-items: center;
 }
 .slot-items {
   border: 1px solid #E7DBEC;
@@ -43,25 +46,5 @@
   flex: 1 1 auto;
   align-items: center;
   padding: 4px;
-}
-
-.user {
-  width: 40px;
-  height: 40px;
-  border-radius: 20px;
-  background-position: center;
-  background-size: cover;
-  border: 1px solid grey;
-}
-
-.user-a {
-  background-image: url('/images/tokage.png');
-}
-
-.user-b {
-  background-image: url('/images/neko.png');
-}
-
-.user-c {
-  background-image: url('/images/penguin.png');
+  min-width: 400px;
 }

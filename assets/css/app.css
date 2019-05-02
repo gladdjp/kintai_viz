@@ -3,6 +3,7 @@
 @import "./phoenix.css";
 @import "./timeline.css";
 @import "./member_activity.css";
+@import "./user.css";
 
 .main-wrapper {
   display: flex;
