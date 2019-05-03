@@ -5,14 +5,15 @@ export const JOIN_CHANNEL = 'JOIN_CHANNEL';
 export const joinChannel = (status) => {
   return {type: JOIN_CHANNEL, status: status};
 }
-export const joinChannrlAsync = () => {
+export const joinChannelAsync = () => {
   return (dispatch) => {
     channel.join()
       .receive("ok", resp => {
-        dispatch(joinChat('success'));
+        console.log("ok");
+        dispatch(joinChannel('success'));
       })
       .receive("error", resp => {
-        dispatch(joinChat('fail'));
+        dispatch(joinChannel('fail'));
       });
     channel.on('receive_message', (message) => {
       console.log('received: ', message);

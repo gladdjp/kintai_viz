@@ -1,7 +1,13 @@
 import React, { Component } from 'react';
 import UserAvatar from './user_avatar';
+import {connect} from 'react-redux';
+import {joinChannelAsync} from '../actions/index'
 
 class Timeline extends Component {
+  componentDidMount() {
+    this.props.onMount();
+  }
+
   renderSlots(label, items) {
     return (
       <div className='slot'>
@@ -26,9 +32,24 @@ class Timeline extends Component {
           {this.renderSlots('14:00', ['d'])}
           {this.renderSlots('14:30', ['e'])}
         </div>
+        status = {this.props.status}
       </div>
     );
   }
 }
 
-export default Timeline;
+const mapStateToProps = (state, ownProps) => {
+  return {
+    status: state.status
+  };
+}
+
+const mapDispatchToProps = (dispatch, ownProps) => {
+  return {
+    onMount: () => {
+      dispatch(joinChannelAsync());
+    }
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Timeline);
