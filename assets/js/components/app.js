@@ -5,6 +5,7 @@ import reducer from '../reducers/index';
 import thunk from 'redux-thunk';
 
 import Timeline from './timeline.js';
+import Messages from './messages.js';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -20,6 +21,7 @@ class App extends Component {
         <div className='main-wrapper'>
           <h1> Today's Kintai</h1>
           <Timeline />
+          <Messages />
         </div>
       </Provider>
     );

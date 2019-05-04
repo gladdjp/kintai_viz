@@ -4,6 +4,7 @@
 @import "./timeline.css";
 @import "./member_activity.css";
 @import "./user.css";
+@import "./messages.css";
 
 .main-wrapper {
   display: flex;

@@ -1,0 +1,21 @@
+.messages {
+  background-color: rgba(244, 244, 244, 0.5);
+  padding: 20px;
+  position: absolute;
+  width: 20%;
+  height: 400px;
+  right: 0;
+  border-radius: 10px;
+  box-shadow: 0 0 4px 0px rgba(0, 0, 0, 0.2);
+}
+
+.message {
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  border-radius: 10px;
+  background-color: rgba(244, 244, 244, 1);
+}
+.message-content {
+  margin-left: 10px;
+}
