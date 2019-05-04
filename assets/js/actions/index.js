@@ -15,16 +15,17 @@ export const joinChannelAsync = () => {
       .receive("error", resp => {
         dispatch(joinChannel('fail'));
       });
-    channel.on('receive_message', (message) => {
-      console.log('received: ', message);
-      dispatch(receivedMessage(message));
+    channel.on('message_created', (message) => {
+      console.log('new message: ', message);
+      dispatch(receiveMessage(message));
     });
-  }
+  };
 }
 
 export const RECEIVE_MESSAGE = 'receive_message';
-export const receive_message = () => {
+export const receiveMessage = (message) => {
   return {
-    type: RECEIVE_MESSAGE
-  }
+    type: RECEIVE_MESSAGE,
+    message: message
+  };
 }
