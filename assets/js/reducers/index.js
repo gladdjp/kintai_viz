@@ -17,7 +17,7 @@ const reducer = (state = defaultState, action) => {
       // return Object.assign({}, state, {messages: updated_messages});
       return Object.assign({}, state, {status: action.status});
     case RECEIVE_MESSAGE:
-      let updated_messages = state.messages.concat(action.message);
+      let updated_messages = [action.message].concat(state.messages);
       return Object.assign({}, state, {messages: updated_messages});
     case RECEIVE_USER:
       let updated_users = state.users.concat(action.user);
