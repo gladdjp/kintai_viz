@@ -27,12 +27,11 @@ class Timeline extends Component {
           2 May 2019
         </div>
         <div className='slots'>
-          {this.renderSlots('13:00', ['a'])}
-          {this.renderSlots('13:30', ['b', 'c'])}
-          {this.renderSlots('14:00', ['d'])}
-          {this.renderSlots('14:30', ['e'])}
+          {this.renderSlots('13:00', [])}
+          {this.renderSlots('13:30', [])}
+          {this.renderSlots('14:00', [])}
+          {this.renderSlots('14:30', [])}
         </div>
-        status = {this.props.status}
       </div>
     );
   }

@@ -6,7 +6,7 @@ import {
 
 const defaultState = {
   messages: [],
-  users: [],
+  users: {},
   status: 'nothing'
 }
 
@@ -20,7 +20,8 @@ const reducer = (state = defaultState, action) => {
       let updated_messages = [action.message].concat(state.messages);
       return Object.assign({}, state, {messages: updated_messages});
     case RECEIVE_USER:
-      let updated_users = state.users.concat(action.user);
+      let user = action.user;
+      let updated_users = Object.assign({}, state.users, {[user.slack_user_id]: user})
       return Object.assign({}, state, {users: updated_users})
     default:
       return state;

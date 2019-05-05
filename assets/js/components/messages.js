@@ -14,7 +14,7 @@ class Messages extends Component {
             this.props.messages.map((message) => {
               return (
                 <CSSTransition key={message.message} timeout={300} className='message-wrapper'>
-                  <Message key={message.message} user={message.user} message={message.message} />
+                  <Message key={message.message} slackUserId={message.slack_user_id} message={message.message} />
                 </CSSTransition>
               );
             })
@@ -31,10 +31,4 @@ const mapStateToProps = (state, ownProps) => {
   };
 }
 
-const mapDistpatchToProps = (dispatch, ownProps) => {
-  return {
-
-  };
-}
-
-export default connect(mapStateToProps, mapDistpatchToProps)(Messages);
+export default connect(mapStateToProps, null)(Messages);

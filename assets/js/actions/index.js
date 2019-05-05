@@ -32,7 +32,7 @@ export const receiveMessage = (message) => {
 }
 
 export const RECEIVE_USER = 'receive_user';
-export const receive_user = (user) => {
+export const receiveUser = (user) => {
   return {
     type: RECEIVE_USER,
     user: user

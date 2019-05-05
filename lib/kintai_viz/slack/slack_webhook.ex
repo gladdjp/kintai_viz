@@ -17,7 +17,7 @@ defmodule KintaiViz.SlackWebhook do
       channel: channel,
       client_msg_id:  ""
     })
-    KintaiVizWeb.Endpoint.broadcast("slack_message:lobby", "message_created", %{message: text})
+    KintaiVizWeb.Endpoint.broadcast("slack_message:lobby", "message_created", %{message: text, slack_user_id: user})
   end
 
   def handle_webhook(_params) do
@@ -25,11 +25,24 @@ defmodule KintaiViz.SlackWebhook do
   end
 
   def create_user(slack_user_id) do
-
+    # Process.sleep(3000);
     case Accounts.get_user_by_slack_user_id(slack_user_id) do
       nil ->
-        {:ok, user} = Accounts.create_user(%{slack_user_id: slack_user_id})
-        KintaiVizWeb.Endpoint.broadcast("slack_message:lobby", "user_created", %{user: user})
+        %{"user" => user} = Slack.Web.Users.info(slack_user_id)
+        {:ok, user} = Accounts.create_user(%{
+          slack_user_id: slack_user_id,
+          username: user["profile"]["real_name"],
+          image_url: user["profile"]["image_192"]
+        })
+        KintaiVizWeb.Endpoint.broadcast(
+          "slack_message:lobby",
+          "user_created",
+          %{
+            username: user.username,
+            image_url: user.image_url,
+            slack_user_id: user.slack_user_id
+          }
+        )
         IO.puts("Create user #{slack_user_id}")
       slack_user ->
         IO.puts("Found slack user #{slack_user.slack_user_id} ")

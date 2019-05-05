@@ -1,11 +1,29 @@
 import React, { Component } from 'react';
+import {connect} from 'react-redux';
 
 class UserAvatar extends Component {
   render() {
     return (
-      <div className={`user-avatar user-${this.props.name}`} key={this.props.name}></div>
+      <div className={`user-avatar`}>
+        <img src={this.props.image_url} />
+      </div>
     );
   }
 }
 
-export default UserAvatar;
+const mapStateToProps = (state, ownProps) => {
+
+  let image_url;
+  let user = state.users[ownProps.slackUserId];
+  console.log("user =====", state)
+  if(user) {
+    image_url = user.image_url;
+  }
+  let p = {
+    image_url: image_url
+  }
+  console.log("ohoy", p);
+  return p;
+}
+
+export default connect(mapStateToProps, null)(UserAvatar);
