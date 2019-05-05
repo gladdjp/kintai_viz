@@ -17,6 +17,9 @@ export const joinChannelAsync = () => {
     channel.on('message_created', (message) => {
       dispatch(receiveMessage(message));
     });
+    channel.on('user_created', (user) => {
+      dispatch(receiveUser(user));
+    });
   };
 }
 
@@ -25,5 +28,13 @@ export const receiveMessage = (message) => {
   return {
     type: RECEIVE_MESSAGE,
     message: message
+  };
+}
+
+export const RECEIVE_USER = 'receive_user';
+export const receive_user = (user) => {
+  return {
+    type: RECEIVE_USER,
+    user: user
   };
 }

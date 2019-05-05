@@ -2,15 +2,14 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux';
 
 import UserAvatar from './user_avatar';
+import Message from './message';
 
 class Messages extends Component {
   render() {
     return (
       <div className='messages'>
-        <div className='message'>
-          <UserAvatar name='a' />
-          <div className='message-content'>Hello dude!</div>
-        </div>
+        <Message user='a' message='have a nice day' />
+        {this.props.messages.map((message) => <Message key={message.message} user={message.user} message={message.message} />)}
       </div>
     )
   }

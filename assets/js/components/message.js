@@ -1,0 +1,17 @@
+import React, { Component } from 'react';
+import {connect} from 'react-redux';
+
+import UserAvatar from './user_avatar';
+
+class Message extends Component {
+  render() {
+    return (
+      <div className='message'>
+        <UserAvatar name={this.props.user} />
+        <div className='message-content'>{this.props.message}</div>
+      </div>
+    )
+  }
+}
+
+export default Message;
