@@ -57,7 +57,7 @@ defmodule KintaiViz.SlackWebhook do
   end
 
   defp get_kintai_time(message) do
-    pattern = ~r/(leave|本日|)(\d\d)(.*)(\d\d)(退勤|時退社|退社|ごろ退社|で退勤|退勤|時出社|出社)/u
+    pattern = ~r/(leave|本日|)(\d\d)(.*)(\d\d)(退勤|時退社|退社|に退社|ごろ退社|で退勤|退勤|時出社|出社)/u
     case Regex.run(pattern, message) do
       nil -> nil
       [_, _, hour, _, minute, _] -> "#{hour}:#{minute}"
