@@ -5,7 +5,6 @@ import UserAvatar from './user_avatar';
 
 class Message extends Component {
   render() {
-    console.log("message props", this.props);
     return (
       <div className='message'>
         <UserAvatar slackUserId={this.props.slackUserId} />

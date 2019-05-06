@@ -15,14 +15,12 @@ const mapStateToProps = (state, ownProps) => {
 
   let image_url;
   let user = state.users[ownProps.slackUserId];
-  console.log("user =====", state)
   if(user) {
     image_url = user.image_url;
   }
   let p = {
     image_url: image_url
   }
-  console.log("ohoy", p);
   return p;
 }
 

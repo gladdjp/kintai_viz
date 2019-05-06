@@ -9,6 +9,7 @@ defmodule KintaiViz.Messages.SlackMessage do
     field :slack_user_id, :string
     field :ts, :string
     field :user_id, :id
+    field :kintai_time, :string
 
     timestamps()
   end
@@ -16,7 +17,7 @@ defmodule KintaiViz.Messages.SlackMessage do
   @doc false
   def changeset(slack_message, attrs) do
     slack_message
-    |> cast(attrs, [:slack_user_id, :message, :ts, :channel, :client_msg_id])
+    |> cast(attrs, [:slack_user_id, :message, :ts, :channel, :client_msg_id, :kintai_time])
     |> validate_required([:slack_user_id, :message, :ts, :channel])
   end
 end
