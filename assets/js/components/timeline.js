@@ -24,13 +24,17 @@ class Timeline extends Component {
     return (
       <div className='timeline'>
         <div className='date'>
-          2 May 2019
+          {(new Date()).toLocaleDateString()}
         </div>
         <div className='slots'>
-          {this.renderSlots('13:00', [])}
-          {this.renderSlots('13:30', [])}
-          {this.renderSlots('14:00', [])}
-          {this.renderSlots('14:30', [])}
+          {this.renderSlots('15:00', [])}
+          {this.renderSlots('15:30', [])}
+          {this.renderSlots('16:00', [])}
+          {this.renderSlots('16:30', [])}
+          {this.renderSlots('17:00', [])}
+          {this.renderSlots('17:30', [])}
+          {this.renderSlots('18:00', [])}
+          {this.renderSlots('18:30', [])}
         </div>
       </div>
     );

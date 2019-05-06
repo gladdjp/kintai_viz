@@ -21,7 +21,7 @@ defmodule KintaiViz.SlackWebhook do
   end
 
   def handle_webhook(_params) do
-    # IO.puts "nooo"
+    # Just do nothing
   end
 
   def create_user(slack_user_id) do
