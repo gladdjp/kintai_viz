@@ -22,3 +22,5 @@ and password. You can leave the database name as is.
 environment variables.
 2. Run `iex -S mix phx.server`. This will start the server at `localhost:4000`
 
+## How it works
+![How it work](kintaiviz.png "kintaiviz")
