@@ -3,8 +3,20 @@ defmodule KintaiVizWeb.SlackMessageControllerTest do
 
   alias KintaiViz.Messages
 
-  @create_attrs %{channel: "some channel", client_msg_id: "some client_msg_id", message: "some message", slack_user_id: "some slack_user_id", ts: "some ts"}
-  @update_attrs %{channel: "some updated channel", client_msg_id: "some updated client_msg_id", message: "some updated message", slack_user_id: "some updated slack_user_id", ts: "some updated ts"}
+  @create_attrs %{
+    channel: "some channel",
+    client_msg_id: "some client_msg_id",
+    message: "some message",
+    slack_user_id: "some slack_user_id",
+    ts: "some ts"
+  }
+  @update_attrs %{
+    channel: "some updated channel",
+    client_msg_id: "some updated client_msg_id",
+    message: "some updated message",
+    slack_user_id: "some updated slack_user_id",
+    ts: "some updated ts"
+  }
   @invalid_attrs %{channel: nil, client_msg_id: nil, message: nil, slack_user_id: nil, ts: nil}
 
   def fixture(:slack_message) do
@@ -46,7 +58,10 @@ defmodule KintaiVizWeb.SlackMessageControllerTest do
   describe "edit slack_message" do
     setup [:create_slack_message]
 
-    test "renders form for editing chosen slack_message", %{conn: conn, slack_message: slack_message} do
+    test "renders form for editing chosen slack_message", %{
+      conn: conn,
+      slack_message: slack_message
+    } do
       conn = get(conn, Routes.slack_message_path(conn, :edit, slack_message))
       assert html_response(conn, 200) =~ "Edit Slack message"
     end
@@ -56,7 +71,11 @@ defmodule KintaiVizWeb.SlackMessageControllerTest do
     setup [:create_slack_message]
 
     test "redirects when data is valid", %{conn: conn, slack_message: slack_message} do
-      conn = put(conn, Routes.slack_message_path(conn, :update, slack_message), slack_message: @update_attrs)
+      conn =
+        put(conn, Routes.slack_message_path(conn, :update, slack_message),
+          slack_message: @update_attrs
+        )
+
       assert redirected_to(conn) == Routes.slack_message_path(conn, :show, slack_message)
 
       conn = get(conn, Routes.slack_message_path(conn, :show, slack_message))
@@ -64,7 +83,11 @@ defmodule KintaiVizWeb.SlackMessageControllerTest do
     end
 
     test "renders errors when data is invalid", %{conn: conn, slack_message: slack_message} do
-      conn = put(conn, Routes.slack_message_path(conn, :update, slack_message), slack_message: @invalid_attrs)
+      conn =
+        put(conn, Routes.slack_message_path(conn, :update, slack_message),
+          slack_message: @invalid_attrs
+        )
+
       assert html_response(conn, 200) =~ "Edit Slack message"
     end
   end
@@ -75,6 +98,7 @@ defmodule KintaiVizWeb.SlackMessageControllerTest do
     test "deletes chosen slack_message", %{conn: conn, slack_message: slack_message} do
       conn = delete(conn, Routes.slack_message_path(conn, :delete, slack_message))
       assert redirected_to(conn) == Routes.slack_message_path(conn, :index)
+
       assert_error_sent 404, fn ->
         get(conn, Routes.slack_message_path(conn, :show, slack_message))
       end

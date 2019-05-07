@@ -6,8 +6,16 @@ defmodule KintaiViz.AccountsTest do
   describe "users" do
     alias KintaiViz.Accounts.User
 
-    @valid_attrs %{image_url: "some image_url", slack_user_id: "some slack_user_id", username: "some username"}
-    @update_attrs %{image_url: "some updated image_url", slack_user_id: "some updated slack_user_id", username: "some updated username"}
+    @valid_attrs %{
+      image_url: "some image_url",
+      slack_user_id: "some slack_user_id",
+      username: "some username"
+    }
+    @update_attrs %{
+      image_url: "some updated image_url",
+      slack_user_id: "some updated slack_user_id",
+      username: "some updated username"
+    }
     @invalid_attrs %{image_url: nil, slack_user_id: nil, username: nil}
 
     def user_fixture(attrs \\ %{}) do

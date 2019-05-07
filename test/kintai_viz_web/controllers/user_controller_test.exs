@@ -3,8 +3,16 @@ defmodule KintaiVizWeb.UserControllerTest do
 
   alias KintaiViz.Accounts
 
-  @create_attrs %{image_url: "some image_url", slack_user_id: "some slack_user_id", username: "some username"}
-  @update_attrs %{image_url: "some updated image_url", slack_user_id: "some updated slack_user_id", username: "some updated username"}
+  @create_attrs %{
+    image_url: "some image_url",
+    slack_user_id: "some slack_user_id",
+    username: "some username"
+  }
+  @update_attrs %{
+    image_url: "some updated image_url",
+    slack_user_id: "some updated slack_user_id",
+    username: "some updated username"
+  }
   @invalid_attrs %{image_url: nil, slack_user_id: nil, username: nil}
 
   def fixture(:user) do
@@ -75,6 +83,7 @@ defmodule KintaiVizWeb.UserControllerTest do
     test "deletes chosen user", %{conn: conn, user: user} do
       conn = delete(conn, Routes.user_path(conn, :delete, user))
       assert redirected_to(conn) == Routes.user_path(conn, :index)
+
       assert_error_sent 404, fn ->
         get(conn, Routes.user_path(conn, :show, user))
       end

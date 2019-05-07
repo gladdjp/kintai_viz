@@ -3,8 +3,20 @@ defmodule KintaiViz.MessagesTest do
 
   alias KintaiViz.Messages
 
-  @valid_attrs %{channel: "some channel", client_msg_id: "some client_msg_id", message: "some message", slack_user_id: "some slack_user_id", ts: "some ts"}
-  @update_attrs %{channel: "some updated channel", client_msg_id: "some updated client_msg_id", message: "some updated message", slack_user_id: "some updated slack_user_id", ts: "some updated ts"}
+  @valid_attrs %{
+    channel: "some channel",
+    client_msg_id: "some client_msg_id",
+    message: "some message",
+    slack_user_id: "some slack_user_id",
+    ts: "some ts"
+  }
+  @update_attrs %{
+    channel: "some updated channel",
+    client_msg_id: "some updated client_msg_id",
+    message: "some updated message",
+    slack_user_id: "some updated slack_user_id",
+    ts: "some updated ts"
+  }
   @invalid_attrs %{channel: nil, client_msg_id: nil, message: nil, slack_user_id: nil, ts: nil}
 
   def slack_message_fixture(attrs \\ %{}) do
@@ -44,7 +56,10 @@ defmodule KintaiViz.MessagesTest do
 
     test "update_slack_message/2 with valid data updates the slack_message" do
       slack_message = slack_message_fixture()
-      assert {:ok, %SlackMessage{} = slack_message} = Messages.update_slack_message(slack_message, @update_attrs)
+
+      assert {:ok, %SlackMessage{} = slack_message} =
+               Messages.update_slack_message(slack_message, @update_attrs)
+
       assert slack_message.channel == "some updated channel"
       assert slack_message.client_msg_id == "some updated client_msg_id"
       assert slack_message.message == "some updated message"
@@ -54,7 +69,10 @@ defmodule KintaiViz.MessagesTest do
 
     test "update_slack_message/2 with invalid data returns error changeset" do
       slack_message = slack_message_fixture()
-      assert {:error, %Ecto.Changeset{}} = Messages.update_slack_message(slack_message, @invalid_attrs)
+
+      assert {:error, %Ecto.Changeset{}} =
+               Messages.update_slack_message(slack_message, @invalid_attrs)
+
       assert slack_message == Messages.get_slack_message!(slack_message.id)
     end
 

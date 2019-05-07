@@ -15,6 +15,5 @@ defmodule KintaiViz.Accounts.User do
     user
     |> cast(attrs, [:username, :slack_user_id, :image_url])
     |> validate_required([:slack_user_id])
-    # |> validate_required([:username, :slack_user_id, :image_url])
   end
 end

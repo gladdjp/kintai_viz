@@ -19,7 +19,8 @@ defmodule KintaiVizWeb.UserSocket do
   def connect(_params, socket, _connect_info) do
     {:ok, socket}
   end
-channel "slack_message:lobby", KintaiVizWeb.SlackMessageChannel
+
+  channel "slack_message:lobby", KintaiVizWeb.SlackMessageChannel
   # Socket id's are topics that allow you to identify all sockets for a given user:
   #
   #     def id(socket), do: "user_socket:#{socket.assigns.user_id}"
