@@ -26,8 +26,12 @@ defmodule KintaiViz.SlackWebhook do
 
   def handle_webhook(_params) do
     # Just do nothing
+    IO.puts "::::: Unrecognize params, do nothing."
   end
 
+  def create_user(nil) do
+    IO.puts "::::: Can't create/look-up user with nil value"
+  end
   def create_user(slack_user_id) do
     Process.sleep(500);
     slack_user = case Accounts.get_user_by_slack_user_id(slack_user_id) do
@@ -36,7 +40,7 @@ defmodule KintaiViz.SlackWebhook do
         {:ok, user} = Accounts.create_user(%{
           slack_user_id: slack_user_id,
           username: user["profile"]["real_name"],
-          image_url: user["profile"]["image_192"]
+          image_url: user["profile"]["image_512"]
         })
 
         IO.puts("Create user #{slack_user_id}")
