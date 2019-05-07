@@ -11,7 +11,7 @@ class Messages extends Component {
       <div className='messages'>
         <TransitionGroup>
           {
-            this.props.messages.map((message) => {
+            this.props.messages.slice(0, 4).map((message) => {
               return (
                 <CSSTransition key={message.message} timeout={300} className='message-wrapper'>
                   <Message key={message.message} slackUserId={message.slack_user_id} message={message.message} />
