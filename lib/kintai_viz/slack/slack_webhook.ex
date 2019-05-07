@@ -6,11 +6,10 @@ defmodule KintaiViz.SlackWebhook do
     IO.puts("Ignore subtype #{subtype}")
   end
 
-  def handle_webhook(%{"type" => "message"} = params) do
+  def handle_webhook(%{"type" => "message", "channel" => channel, "text" => message, "ts" => ts, "user" => slack_user_id}) do
     # Process.sleep(3000);
-    %{"channel" => channel, "text" => message, "ts" => ts, "user" => slack_user_id} = params
     kintai_time = get_kintai_time(message)
-    IO.puts "::::: Save message '#{inspect params}'"
+    IO.puts "::::: Save message '#{message}'"
     Messages.create_slack_message(%{
       ts: ts,
       channel: channel,
@@ -21,7 +20,8 @@ defmodule KintaiViz.SlackWebhook do
     KintaiVizWeb.Endpoint.broadcast(
       "slack_message:lobby",
       "message_created",
-      %{message: message, slack_user_id: slack_user_id, kintai_time: kintai_time})
+      %{message: message, slack_user_id: slack_user_id, kintai_time: kintai_time}
+    )
   end
 
   def handle_webhook(_params) do
