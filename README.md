@@ -8,6 +8,7 @@ them in real time.
 - Elixir (>=1.7)
 - PostgreSQL
 - Node
+- Slack App with api token. The app should enable the message and user scope.
 
 ## Installation
 1. Rename `.env.example` to `.env` then edit that file by adding your db username
